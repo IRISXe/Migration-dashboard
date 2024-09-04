@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful SVG Cards</title>
+    <style>
+        /* Basic reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: white;
+            padding: 20px;
+            border: 5px solid transparent;
+            background-origin: border-box;
+            position: relative;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .card svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            fill: currentColor;
+        }
+
+        .card-1 {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            border-color: #ff9a9e;
+        }
+
+        .card-2 {
+            background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+            border-color: #a18cd1;
+        }
+
+        .card-3 {
+            background: linear-gradient(45deg, #fad0c4, #ffd1ff);
+            border-color: #fad0c4;
+        }
+
+        .card-4 {
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            border-color: #ffecd2;
+            color: #333;
+        }
+
+        .card-5 {
+            background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+            border-color: #a1c4fd;
+        }
+
+        .card-title {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .card-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: inherit;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Card 1 -->
+        <div class="card card-1">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="30" stroke="none" />
+            </svg>
+            <div class="card-content">
+                <h2 class="card-title">1</h2>
+                <p class="card-text">This is a brief description of what this card is about.</p>
+                <a href="#" class="card-button">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card card-2">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="12" width="40" height="40" stroke="none" />
+            </svg>
+            <div class="card-content">
+                <h2 class="card-title">2</h2>
+                <p class="card-text">This is a brief description of what this card is about.</p>
+                <a href="#" class="card-button">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card card-3">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="32,4 60,60 4,60" stroke="none" />
+            </svg>
+            <div class="card-content">
+                <h2 class="card-title">3</h2>
+                <p class="card-text">This is a brief description of what this card is about.</p>
+                <a href="#" class="card-button">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card card-4">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="32" cy="32" rx="28" ry="16" stroke="none" />
+            </svg>
+            <div class="card-content">
+                <h2 class="card-title">4</h2>
+                <p class="card-text">This is a brief description of what this card is about.</p>
+                <a href="#" class="card-button">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card card-5">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 4 C 12 16, 12 48, 32 60 C 52 48, 52 16, 32 4 Z" stroke="none" />
+            </svg>
+            <div class="card-content">
+                <h2 class="card-title">5</h2>
+                <p class="card-text">This is a brief description of what this card is about.</p>
+                <a href="#" class="card-button">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

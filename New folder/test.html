@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doughnut Chart with Number in the Middle</title>
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Plugin Datalabels -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+    <canvas id="myDoughnutChart"></canvas>
+    <script>
+        const ctx = document.getElementById('myDoughnutChart').getContext('2d');
+        const data = {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: ['red', 'blue', 'yellow'],
+                hoverOffset: 4
+            }]
+        };
+
+        const myDoughnutChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                plugins: {
+                    datalabels: {
+                        display: true,
+                        formatter: (value, ctx) => {
+                            // Calculate the total sum of data values
+                            const total = ctx.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
+                            // Only show the total in the center of the doughnut
+                            if (ctx.dataIndex === ctx.chart.data.datasets[0].data.length - 1) {
+                                return total;
+                            }
+                            return '';
+                        },
+                        color: '#000',
+                        font: {
+                            weight: 'bold',
+                            size: '24',
+                        },
+                        anchor: 'center',
+                        align: 'center',
+                    }
+                }
+            },
+            plugins: [ChartDataLabels] // Add the plugin to the chart instance
+        });
+    </script>
+</body>
+</html>

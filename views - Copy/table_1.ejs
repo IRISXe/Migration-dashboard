@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grouped Data Table</title>
+    <style>
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Orbit Migration</h1>
+    <table>
+        <table>
+            <thead>
+                <tr>
+                    <% columns.forEach(col => { %>
+                        <th><%= col %></th>
+                    <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(row => { %>
+                    <tr>
+                        <% row.forEach(cell => { %>
+                            <td><%= cell %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Grouped Data Table</title>
+    <style>
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1 style="text-align: center;">Dynamic Grouped Data Table and Chart</h1>
+    <table>
+        <thead>
+            <tr>
+                <% columns.forEach(col => { %>
+                    <th><%= col %></th>
+                <% }); %>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(row => { %>
+                <tr>
+                    <% row.forEach(cell => { %>
+                        <td><%= cell %></td>
+                    <% }); %>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <div style="width: 600px; height: 400px; margin: auto; padding-top: 30px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        const labels = <%= JSON.stringify(data.map(row => row[0])) %>;  // Assuming first column for labels
+        const dataValues = <%= JSON.stringify(data.map(row => row[1])) %>;  // Assuming second column for data
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '<%= columns[1] %>',  // Using the second column name as label
+                    data: dataValues,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
